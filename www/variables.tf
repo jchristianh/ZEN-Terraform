@@ -60,3 +60,8 @@ variable "ports" {
     "web_proto"   = "tcp"
   }
 }
+
+
+variable "install_pkgs" {
+  default = "epel-release perl ansible git"
+}

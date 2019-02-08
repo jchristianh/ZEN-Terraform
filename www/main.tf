@@ -24,13 +24,13 @@ resource "aws_instance" "tzg_web" {
 
   # run yum update -y on creation and install
   # some base packages:
-  #  provisioner "remote-exec" {
-  #    inline = ["sudo yum update -y; sudo yum install -y epel-release perl ansible git"]
-  #
-  #    connection {
-  #      type        = "ssh"
-  #      user        = "${local.ssh_user_name}"
-  #      private_key = "${local.ssh_sec_key}"
-  #    }
-  #  }
+    provisioner "remote-exec" {
+      inline = ["sudo yum update -y; sudo yum install -y ${var.install_pkgs}"]
+  
+      connection {
+        type        = "ssh"
+        user        = "${local.ssh_user_name}"
+        private_key = "${local.ssh_sec_key}"
+      }
+    }
 }
