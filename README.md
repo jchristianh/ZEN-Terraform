@@ -17,7 +17,7 @@ Generate SSH keys:
 ```
 ssh-keygen -t rsa
 ```
-...save to the 'ssh_keys' folder created above. Default keys are setup to be tzg.pub and tzg.pri. These values can be edited in [code]www/variables.tf[/code]
+...save to the 'ssh_keys' folder created above. Default keys are setup to be tzg.pub and tzg.pri. These values can be edited in `www/variables.tf`
 
 
 Finally run the project via Terraform:
