@@ -3,7 +3,7 @@ resource "aws_security_group" "tzg_web_acl" {
   description = "TZG Web Network ACL"
   vpc_id      = "${var.vpc_id}"
 
-  # allow SSH/HTTP/HTTPS inbound
+  # allow SSH/HTTP/HTTPS inbound (from internet)
   ingress {
     from_port   = "22"
     to_port     = "22"
@@ -21,6 +21,29 @@ resource "aws_security_group" "tzg_web_acl" {
   ingress {
     from_port   = "443"
     to_port     = "443"
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # allow any outbound
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = -1
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+
+resource "aws_security_group" "tzg_db_acl" {
+  name        = "tzg_db"
+  description = "TZG DB Network ACL"
+  vpc_id      = "${var.vpc_id}"
+
+  # allow SSH inbound (from internet)
+  ingress {
+    from_port   = "22"
+    to_port     = "22"
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
