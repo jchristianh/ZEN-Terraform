@@ -3,6 +3,7 @@ variable "vpc_id" {}
 variable "subnet_id" {}
 variable "tzg_db_acl" {}
 variable "ssh_key_pair" {}
+variable "pri_ip" {}
 
 variable "tzg_vpc_cidr" {
   default = "10.1.0.0/16"

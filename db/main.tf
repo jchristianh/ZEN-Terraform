@@ -6,6 +6,7 @@ resource "aws_instance" "tzg_db" {
   key_name               = "${var.ssh_key_pair}"
   vpc_security_group_ids = ["${var.tzg_db_acl}"]
   subnet_id              = "${var.subnet_id}"
+  private_ip             = "${var.pri_ip}"
 
   tags = {
     Name     = "TZG DB"

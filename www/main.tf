@@ -11,6 +11,7 @@ resource "aws_instance" "tzg_web" {
   key_name               = "${aws_key_pair.keys.key_name}"
   vpc_security_group_ids = ["${var.tzg_web_acl}"]
   subnet_id              = "${var.subnet_id}"
+  private_ip             = "${var.pri_ip}"
 
   tags = {
     Name     = "TZG Web"

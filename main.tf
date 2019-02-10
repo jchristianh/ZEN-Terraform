@@ -15,6 +15,7 @@ module "tzg_www" {
   vpc_id      = "${module.tzg_vpc.tzg_vpc_id}"
   subnet_id   = "${module.tzg_vpc.tzg_subnet_id}"
   tzg_web_acl = "${module.tzg_acls.web_acl}"
+  pri_ip      = "${var.tzg_www_pri_ip}"
 }
 
 
@@ -25,4 +26,5 @@ module "tzg_db" {
   subnet_id    = "${module.tzg_vpc.tzg_subnet_id}"
   tzg_db_acl   = "${module.tzg_acls.db_acl}"
   ssh_key_pair = "${module.tzg_www.ssh_key_pair}"
+  pri_ip       = "${var.tzg_db_pri_ip}"
 }
