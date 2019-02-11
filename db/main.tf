@@ -6,6 +6,7 @@ resource "aws_instance" "tzg_db" {
   key_name               = "${var.ssh_key_pair}"
   vpc_security_group_ids = ["${var.tzg_db_acl}"]
   subnet_id              = "${var.subnet_id}"
+  private_ip             = "${var.private_ip}"
 
   tags = {
     Name     = "TZG DB"
@@ -20,7 +21,7 @@ resource "aws_instance" "tzg_db" {
   # run yum update -y on creation and install
   # some base packages:
     provisioner "remote-exec" {
-      inline = ["sudo yum update -y; sudo yum install -y ${var.install_pkgs}"]
+      inline = ["sudo yum update -y; sudo yum install -y ${var.db_install_pkgs}"]
 
       connection {
         type        = "ssh"

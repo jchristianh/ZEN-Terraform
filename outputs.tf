@@ -12,7 +12,7 @@ Public IP  : ${module.tzg_www.pub_ip}
 SSH via    : ssh -i "${module.tzg_www.ssh_key_path}/${module.tzg_www.ssh_key_name}.pri" ${module.tzg_www.ssh_user}@${module.tzg_www.pub_dns}
 Ansible    : ansible-playbook -i '${module.tzg_www.pub_ip},' --private-key=${module.tzg_www.ssh_key_name}.pri -u centos provision_all.yml
 
-Installed  : ${module.tzg_www.install_pkgs}
+Installed  : ${var.web_install_pkgs}
 
 ----------------------------------------------------------------------------------------------
 
@@ -26,7 +26,7 @@ Public IP  : ${module.tzg_db.pub_ip}
 SSH via    : ssh -i "${module.tzg_db.ssh_key_path}/${module.tzg_db.ssh_key_name}.pri" ${module.tzg_db.ssh_user}@${module.tzg_db.pub_dns}
 Ansible    : ansible-playbook -i '${module.tzg_db.pub_ip},' --private-key=${module.tzg_db.ssh_key_name}.pri -u centos provision_all.yml
 
-Installed  : ${module.tzg_db.install_pkgs}
+Installed  : ${var.db_install_pkgs}
 
 ----------------------------------------------------------------------------------------------
 

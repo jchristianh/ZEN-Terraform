@@ -11,6 +11,7 @@ resource "aws_instance" "tzg_web" {
   key_name               = "${aws_key_pair.keys.key_name}"
   vpc_security_group_ids = ["${var.tzg_web_acl}"]
   subnet_id              = "${var.subnet_id}"
+  private_ip             = "${var.private_ip}"
 
   tags = {
     Name     = "TZG Web"
@@ -25,7 +26,7 @@ resource "aws_instance" "tzg_web" {
   # run yum update -y on creation and install
   # some base packages:
     provisioner "remote-exec" {
-      inline = ["sudo yum update -y; sudo yum install -y ${var.install_pkgs}"]
+      inline = ["sudo yum update -y; sudo yum install -y ${var.web_install_pkgs}"]
 
       connection {
         type        = "ssh"

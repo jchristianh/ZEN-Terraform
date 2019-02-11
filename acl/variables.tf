@@ -1,2 +1,3 @@
+# ACL variables
 variable "ec2_region" {}
-variable "vpc_id" {}
+variable "vpc_id"     {}
