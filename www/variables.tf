@@ -17,7 +17,7 @@ locals {
   ssh_key_path  = "./ssh_keys"
   ssh_pub_key   = "${file("${local.ssh_key_path}/${local.ssh_key_name}.pub")}"
   ssh_sec_key   = "${file("${local.ssh_key_path}/${local.ssh_key_name}.pri")}"
-  conn_endpoint = "${aws_instance.tzg_web.public_dns}:${var.ports["web_port"]}"
+  #conn_endpoint = "${aws_instance.tzg_web.public_dns}:${var.ports["web_port"]}"
 }
 
 # Official CentOS

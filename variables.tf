@@ -38,6 +38,6 @@ variable "db_instance_count"  { default = 1 }
 # Package list for package pre-install prior
 # to provision via configuration management:
 ############################################
-variable "web_install_pkgs" { default = "epel-release perl ansible git httpd"          }
+variable "web_install_pkgs" { default = "epel-release perl ansible git httpd mariadb"  }
 variable "db_install_pkgs"  { default = "epel-release perl ansible git mariadb-server" }
 

@@ -48,6 +48,14 @@ resource "aws_security_group" "tzg_db_acl" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  # allow MySQL access from VPC
+  ingress {
+    from_port   = "3306"
+    to_port     = "3306"
+    protocol    = "tcp"
+    cidr_blocks = ["10.2.2.0/24"]
+  }
+
   # allow any outbound
   egress {
     from_port   = 0
