@@ -10,6 +10,8 @@ variable "instance_type"     {}
 variable "db_instance_count" {}
 variable "db_install_pkgs"   {}
 variable "private_ip"        {}
+variable "volume_size"       {}
+variable "volume_type"       {}
 
 
 locals {

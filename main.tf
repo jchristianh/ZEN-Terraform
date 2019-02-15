@@ -25,6 +25,8 @@ module "tzg_www" {
   web_instance_count = "${var.web_instance_count}"
   web_install_pkgs   = "${var.web_install_pkgs}"
   private_ip         = "${var.web_pri_ip}"
+  volume_size        = "${var.volume_size}"
+  volume_type        = "${var.volume_type}"
 }
 
 
@@ -42,4 +44,6 @@ module "tzg_db" {
   db_instance_count = "${var.db_instance_count}"
   db_install_pkgs   = "${var.db_install_pkgs}"
   private_ip        = "${var.db_pri_ip}"
+  volume_size        = "${var.volume_size}"
+  volume_type        = "${var.volume_type}"
 }

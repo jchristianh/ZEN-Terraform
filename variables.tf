@@ -35,6 +35,12 @@ variable "web_instance_count" { default = 1 }
 variable "db_instance_count"  { default = 1 }
 
 
+# Instance storage defaults:
+############################
+variable "volume_size" { default = "20"  }
+variable "volume_type" { default = "gp2" }
+
+
 # Package list for package pre-install prior
 # to provision via configuration management:
 ############################################

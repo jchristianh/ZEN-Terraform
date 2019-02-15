@@ -20,7 +20,8 @@ resource "aws_instance" "tzg_web" {
 
   root_block_device {
     delete_on_termination = true
-    volume_size           = "20"
+    volume_size           = "${var.volume_size}"
+    volume_type           = "${var.volume_type}"
   }
 
   # run yum update -y on creation and install
