@@ -12,12 +12,18 @@ module "tzg_acls" {
   vpc_id     = "${module.tzg_vpc.tzg_vpc_id}"
 }
 
+module "tzg_ssh_keys" {
+  source     = "modules/keys"
+  ec2_region = "${var.ec2_region}"
+}
+
 module "tzg_www" {
   source             = "modules/www"
   ec2_region         = "${var.ec2_region}"
   vpc_id             = "${module.tzg_vpc.tzg_vpc_id}"
   subnet_id          = "${module.tzg_vpc.tzg_subnet_id}"
   tzg_web_acl        = "${module.tzg_acls.web_acl}"
+  ssh_key_pair       = "${module.tzg_ssh_keys.ssh_key_pair}"
   tzg_vpc_cidr       = "${var.tzg_vpc_cidr}"
   tzg_subnet         = "${var.tzg_subnet}"
   instance_tenancy   = "${var.instance_tenancy}"
@@ -36,7 +42,7 @@ module "tzg_db" {
   vpc_id            = "${module.tzg_vpc.tzg_vpc_id}"
   subnet_id         = "${module.tzg_vpc.tzg_subnet_id}"
   tzg_db_acl        = "${module.tzg_acls.db_acl}"
-  ssh_key_pair      = "${module.tzg_www.ssh_key_pair}"
+  ssh_key_pair      = "${module.tzg_ssh_keys.ssh_key_pair}"
   tzg_vpc_cidr      = "${var.tzg_vpc_cidr}"
   tzg_subnet        = "${var.tzg_subnet}"
   instance_tenancy  = "${var.instance_tenancy}"
