@@ -1,5 +1,5 @@
 module "tzg_vpc" {
-  source           = "vpc"
+  source           = "modules/vpc"
   ec2_region       = "${var.ec2_region}"
   tzg_vpc_cidr     = "${var.tzg_vpc_cidr}"
   tzg_subnet       = "${var.tzg_subnet}"
@@ -7,13 +7,13 @@ module "tzg_vpc" {
 }
 
 module "tzg_acls" {
-  source     = "acl"
+  source     = "modules/acl"
   ec2_region = "${var.ec2_region}"
   vpc_id     = "${module.tzg_vpc.tzg_vpc_id}"
 }
 
 module "tzg_www" {
-  source             = "www"
+  source             = "modules/www"
   ec2_region         = "${var.ec2_region}"
   vpc_id             = "${module.tzg_vpc.tzg_vpc_id}"
   subnet_id          = "${module.tzg_vpc.tzg_subnet_id}"
@@ -31,7 +31,7 @@ module "tzg_www" {
 
 
 module "tzg_db" {
-  source            = "db"
+  source            = "modules/db"
   ec2_region        = "${var.ec2_region}"
   vpc_id            = "${module.tzg_vpc.tzg_vpc_id}"
   subnet_id         = "${module.tzg_vpc.tzg_subnet_id}"
