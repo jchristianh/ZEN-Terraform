@@ -2,7 +2,7 @@
 #####################
 variable "ec2_region"       { default = "us-east-1" }
 variable "instance_tenancy" { default = "default"   }
-variable "instance_type"    { default = "t2.micro"  }
+variable "instance_type"    { default = "t3.micro"  }
 
 
 # ACL Instance Rules:
@@ -37,7 +37,7 @@ variable "db_instance_count"  { default = 1 }
 
 # Instance storage defaults:
 ############################
-variable "volume_size" { default = "20"  }
+variable "volume_size" { default = "15"  }
 variable "volume_type" { default = "gp2" }
 
 
