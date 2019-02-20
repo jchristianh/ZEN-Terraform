@@ -38,6 +38,7 @@ module "tzg_www" {
   volume_size        = "${var.volume_size}"
   volume_type        = "${var.volume_type}"
   ansible_playbook   = "${var.ansible_playbook}"
+  www_ansible_role   = "${var.www_ansible_role}"
 }
 
 
@@ -62,4 +63,5 @@ module "tzg_db" {
   volume_size       = "${var.volume_size}"
   volume_type       = "${var.volume_type}"
   ansible_playbook  = "${var.ansible_playbook}"
+  db_ansible_role   = "${var.db_ansible_role}"
 }

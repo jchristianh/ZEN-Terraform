@@ -38,7 +38,7 @@ resource "aws_instance" "tzg_web" {
 #    }
 
   provisioner "local-exec" {
-    command = "sleep 120;ansible-playbook -u ${var.ssh_key_user} -i '${aws_instance.tzg_web.public_ip},' --private-key '${var.ssh_key_path}/${var.ssh_key_name}.pri' ${var.ansible_playbook} -e 'host_key_checking=False' -e system_role=webserver"
+    command = "sleep 120;ansible-playbook -u ${var.ssh_key_user} -i '${aws_instance.tzg_web.public_ip},' --private-key '${var.ssh_key_path}/${var.ssh_key_name}.pri' ${var.ansible_playbook} -e 'host_key_checking=False' -e system_role=${var.www_ansible_role}"
 
     environment {
       ANSIBLE_HOST_KEY_CHECKING = "False"

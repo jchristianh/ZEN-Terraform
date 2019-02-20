@@ -17,6 +17,7 @@ variable "private_ip"        {}
 variable "volume_size"       {}
 variable "volume_type"       {}
 variable "ansible_playbook"  {}
+variable "db_ansible_role"   {}
 
 
 locals {
