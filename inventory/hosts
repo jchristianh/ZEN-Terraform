@@ -1,0 +1,14 @@
+[webservers]
+10.2.2.100
+
+
+[dbservers]
+10.2.2.200
+
+
+[webservers:vars]
+systype=ws
+
+
+[dbservers:vars]
+systype=db

@@ -1,0 +1,5 @@
+---
+  centos_repo_file: "/etc/yum.repos.d/CentOS-Base.repo"
+  centos_release: "{{ ansible_distribution_major_version }}"
+  centos_release_ver: "7.6.1810"
+  local_repo_address: "https://centos.thezengarden.net"

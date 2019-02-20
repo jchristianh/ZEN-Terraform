@@ -1,0 +1,6 @@
+---
+- name: generate YUM repo file for hosts
+  template:
+    src: templates/centos_base_repo.j2
+    dest: "{{ centos_repo_file}}"
+    mode: 0644

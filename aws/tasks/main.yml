@@ -1,0 +1,7 @@
+---
+# tasks file for aws
+
+- include: selinux.yml
+- include: local_repo_setup.yml
+- include: base_pkgs.yml
+- include: motd.yml

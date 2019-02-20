@@ -2,7 +2,7 @@
 #####################
 variable "ec2_region"       { default = "us-east-1" }
 variable "instance_tenancy" { default = "default"   }
-variable "instance_type"    { default = "t3.micro"  }
+variable "instance_type"    { default = "t2.micro"  }
 
 
 # ACL Instance Rules:
@@ -47,3 +47,7 @@ variable "volume_type" { default = "gp2" }
 variable "web_install_pkgs" { default = "epel-release perl ansible git httpd mariadb"  }
 variable "db_install_pkgs"  { default = "epel-release perl ansible git mariadb-server" }
 
+
+# Ansible Vars:
+###############
+variable "ansible_playbook" { default = "provision_aws.yml" }

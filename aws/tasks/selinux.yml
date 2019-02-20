@@ -1,0 +1,8 @@
+---
+- name: set selinux status for all non-lxc nodes
+  template:
+    src: templates/selinux.j2
+    dest: "{{ selinux_file}}"
+    mode: 0644
+  when:
+    - ansible_virtualization_type != "lxc"

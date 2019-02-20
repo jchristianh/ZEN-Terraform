@@ -1,0 +1,8 @@
+---
+  motd_file: "/etc/motd"
+#  host_ip: "{{ ansible_default_ipv4.address | default('127.0.0.1') }}"
+  host_ip: "127.0.0.1"
+
+#  set_fact:
+#    host_ip: "{{ ansible_default_ipv4.address }}"
+#    when: ansible_default_ipv4.address is defined
