@@ -1,5 +1,0 @@
----
-  selinux_file: "/etc/sysconfig/selinux"
-  
-  selinux_status: "disabled"
-  selinux_status_type: "minimum"

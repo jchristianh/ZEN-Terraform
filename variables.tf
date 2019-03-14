@@ -50,6 +50,7 @@ variable "db_install_pkgs"  { default = "epel-release perl ansible git mariadb-s
 
 # Ansible Vars:
 ###############
-variable "ansible_playbook" { default = "provision_aws.yml" }
-variable "www_ansible_role" { default = "webserver"         }
-variable "db_ansible_role"  { default = "dbserver"          }
+variable "ansible_playbook"    { default = "provision_aws.yml" }
+variable "www_ansible_role"    { default = "webserver"         }
+variable "db_ansible_role"     { default = "dbserver"          }
+variable "ansible_sleep_delay" { default = "90"                }

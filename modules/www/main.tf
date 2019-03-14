@@ -25,23 +25,7 @@ resource "aws_instance" "tzg_web" {
     volume_type           = "${var.volume_type}"
   }
 
-  # run yum update -y on creation and install
-  # some base packages:
-#    provisioner "remote-exec" {
-#      inline = ["sudo yum update -y; sudo yum install -y ${var.web_install_pkgs}"]
-#
-#      connection {
-#        type        = "ssh"
-#        user        = "${var.ssh_user_name}"
-#        private_key = "${var.ssh_sec_key}"
-#      }
-#    }
-
   provisioner "local-exec" {
-    command = "sleep 120;ansible-playbook -u ${var.ssh_key_user} -i '${aws_instance.tzg_web.public_ip},' --private-key '${var.ssh_key_path}/${var.ssh_key_name}.pri' ${var.ansible_playbook} -e 'host_key_checking=False' -e system_role=${var.www_ansible_role}"
-
-    environment {
-      ANSIBLE_HOST_KEY_CHECKING = "False"
-    }
+    command = "sleep ${var.ansible_sleep_delay};ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ${var.ssh_key_user} -i '${aws_instance.tzg_web.public_ip},' --private-key '${var.ssh_key_path}/${var.ssh_key_name}.pri' ${var.ansible_playbook} -e system_role=${var.www_ansible_role}"
   }
 }
