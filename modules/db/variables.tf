@@ -33,6 +33,7 @@ locals {
 # Official CentOS
 data "aws_ami" "centos" {
   most_recent = true
+  owners      = ["aws-marketplace"]
 
   filter {
     name   = "virtualization-type"
