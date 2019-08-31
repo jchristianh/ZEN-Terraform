@@ -1,3 +1,5 @@
+# Create AWS VPC:
+#################
 module "tzg_vpc" {
   source           = "./modules/vpc"
   ec2_region       = var.ec2_region
@@ -6,17 +8,26 @@ module "tzg_vpc" {
   instance_tenancy = var.instance_tenancy
 }
 
+
+# Define ACL's for VPC:
+#######################
 module "tzg_acls" {
   source     = "./modules/acl"
   ec2_region = var.ec2_region
   vpc_id     = module.tzg_vpc.tzg_vpc_id
 }
 
+
+# Setup defined SSH keys on AWS for access:
+###########################################
 module "tzg_ssh_keys" {
   source     = "./modules/keys"
   ec2_region = var.ec2_region
 }
 
+
+# Create the web server EC2 instance:
+#####################################
 module "tzg_www" {
   source              = "./modules/www"
   ec2_region          = var.ec2_region
@@ -42,6 +53,9 @@ module "tzg_www" {
   ansible_sleep_delay = var.ansible_sleep_delay
 }
 
+
+# Create the database server EC2 instance:
+##########################################
 module "tzg_db" {
   source              = "./modules/db"
   ec2_region          = var.ec2_region

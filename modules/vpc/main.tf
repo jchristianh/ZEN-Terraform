@@ -1,5 +1,5 @@
 # VPC for The Zen Garden AWS Cloud
-
+##################################
 resource "aws_vpc" "tzg_vpc" {
   cidr_block           = "${var.tzg_vpc_cidr}"
   instance_tenancy     = "${var.instance_tenancy}"

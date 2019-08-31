@@ -1,5 +1,5 @@
 # Database Server for The Zen Garden AWS Cloud
-
+##############################################
 resource "aws_instance" "tzg_db" {
   ami                    = "${data.aws_ami.centos.id}"
   instance_type          = "${var.instance_type}"
@@ -20,7 +20,6 @@ resource "aws_instance" "tzg_db" {
   }
 
   provisioner "local-exec" {
-    command = "sleep ${var.ansible_sleep_delay};ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ${var.ssh_key_user} -i '${aws_instance.tzg_db.public_ip},' --private-key '${var.ssh_key_path}/${var.ssh_key_name}.pri' ${var.ansible_playbook} -e system_role=${var.db_ansible_role} --tags initdb"
+    command = "sleep ${var.ansible_sleep_delay};ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ${var.ssh_key_user} -i '${aws_instance.tzg_db.public_ip},' --private-key '${var.ssh_key_path}/${var.ssh_key_name}.pri' ${var.ansible_playbook} -e system_role=${var.db_ansible_role} --tags all,initdb"
   }
-
 }

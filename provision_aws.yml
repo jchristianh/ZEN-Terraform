@@ -1,7 +1,6 @@
 ---
-
 # Provision our AWS Instances:
-
+##############################
 - hosts: all
   become: yes
   gather_facts: yes
@@ -11,11 +10,16 @@
   - name: base provisioning
     include_role:
       name: aws
+    tags:
+      - all
+      - initdb
+
 
   - name: include zen_cloud role for webserver node(s)
     include_role:
       name: zen_cloud
     when: system_role == "webserver"
+
 
   - name: include zen_db role for database node(s)
     include_role:

@@ -1,5 +1,5 @@
-# VPC Vars for The Zen Garden AWS Cloud
-
+# Variables pulled in from ../main.tf | ../variables.tf:
+########################################################
 variable "tzg_vpc_cidr"     {}
 variable "tzg_subnet"       {}
 variable "instance_tenancy" {}

@@ -1,14 +1,8 @@
-# Web Server for The Zen Garden AWS Cloud
-
-#resource "aws_key_pair" "keys" {
-#  key_name   = "${local.ssh_key_name}"
-#  public_key = "${local.ssh_pub_key}"
-#}
-
+# Web Server for The Zen Garden AWS Cloud:
+##########################################
 resource "aws_instance" "tzg_web" {
   ami                    = "${data.aws_ami.centos.id}"
   instance_type          = "${var.instance_type}"
-#  key_name               = "${aws_key_pair.keys.key_name}"
   key_name               = "${var.ssh_key_pair}"
   vpc_security_group_ids = ["${var.tzg_web_acl}"]
   subnet_id              = "${var.subnet_id}"
