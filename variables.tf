@@ -1,14 +1,14 @@
 # AWS Core Variables:
 #####################
 variable "ec2_region"       { default = "us-east-1" }
-variable "instance_tenancy" { default = "default"   }
-variable "instance_type"    { default = "t2.micro"  }
+variable "instance_tenancy" { default = "default" }
+variable "instance_type"    { default = "t2.micro" }
 
 
 # ACL Instance Rules:
 #####################
 variable "tzg_web_ports" {
-  default {
+  default = {
     "ssh"           = 22
     "ssh_proto"     = "tcp"
     "web"           = 80
@@ -23,9 +23,8 @@ variable "tzg_web_ports" {
 ################################
 variable "tzg_vpc_cidr" { default = "10.2.0.0/16" }
 variable "tzg_subnet"   { default = "10.2.2.0/24" }
-
-variable "web_pri_ip"   { default = "10.2.2.100"  }
-variable "db_pri_ip"    { default = "10.2.2.200"  }
+variable "web_pri_ip"   { default = "10.2.2.100" }
+variable "db_pri_ip"    { default = "10.2.2.200" }
 
 
 # Instances of each service to run:
@@ -37,20 +36,20 @@ variable "db_instance_count"  { default = 1 }
 
 # Instance storage defaults:
 ############################
-variable "volume_size" { default = "15"  }
+variable "volume_size" { default = "15" }
 variable "volume_type" { default = "gp2" }
 
 
 # Package list for package pre-install prior
 # to provision via configuration management:
 ############################################
-variable "web_install_pkgs" { default = "epel-release perl ansible git httpd mariadb"  }
+variable "web_install_pkgs" { default = "epel-release perl ansible git httpd mariadb" }
 variable "db_install_pkgs"  { default = "epel-release perl ansible git mariadb-server" }
 
 
 # Ansible Vars:
 ###############
 variable "ansible_playbook"    { default = "provision_aws.yml" }
-variable "www_ansible_role"    { default = "webserver"         }
-variable "db_ansible_role"     { default = "dbserver"          }
-variable "ansible_sleep_delay" { default = "90"                }
+variable "www_ansible_role"    { default = "webserver" }
+variable "db_ansible_role"     { default = "dbserver" }
+variable "ansible_sleep_delay" { default = "90" }

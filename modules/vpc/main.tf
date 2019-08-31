@@ -1,11 +1,11 @@
 # VPC for The Zen Garden AWS Cloud
-
+##################################
 resource "aws_vpc" "tzg_vpc" {
   cidr_block           = "${var.tzg_vpc_cidr}"
   instance_tenancy     = "${var.instance_tenancy}"
   enable_dns_hostnames = "true"
 
-  tags {
+  tags = {
     Name     = "TZG Private Cloud"
     Location = "${var.ec2_region}"
   }
@@ -17,7 +17,7 @@ resource "aws_subnet" "tzg_subnet" {
   map_public_ip_on_launch = "true"
   depends_on              = ["aws_internet_gateway.tzg_gateway"]
 
-  tags {
+  tags = {
     Name     = "TZG Subnet 1"
     Location = "${var.ec2_region}"
   }
@@ -26,7 +26,7 @@ resource "aws_subnet" "tzg_subnet" {
 resource "aws_internet_gateway" "tzg_gateway" {
   vpc_id = "${aws_vpc.tzg_vpc.id}"
 
-  tags {
+  tags = {
     Name     = "TZG Gateway"
     Location = "${var.ec2_region}"
   }
@@ -40,7 +40,7 @@ resource "aws_route_table" "the_world" {
     gateway_id = "${aws_internet_gateway.tzg_gateway.id}"
   }
 
-  tags {
+  tags = {
     Name     = "TZG World Route"
     Location = "${var.ec2_region}"
   }

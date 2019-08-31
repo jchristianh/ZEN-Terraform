@@ -1,3 +1,5 @@
+# Variables pulled in from ../main.tf | ../variables.tf:
+########################################################
 variable "ec2_region"          {}
 variable "vpc_id"              {}
 variable "subnet_id"           {}
@@ -21,18 +23,10 @@ variable "db_ansible_role"     {}
 variable "ansible_sleep_delay" {}
 
 
-locals {
-  ssh_user_name = "centos"
-  ssh_key_name  = "tzg"
-  ssh_key_path  = "./ssh_keys"
-  ssh_pub_key   = "${file("${local.ssh_key_path}/${local.ssh_key_name}.pub")}"
-  ssh_sec_key   = "${file("${local.ssh_key_path}/${local.ssh_key_name}.pri")}"
-}
-
-
 # Official CentOS
 data "aws_ami" "centos" {
   most_recent = true
+  owners      = ["aws-marketplace"]
 
   filter {
     name   = "virtualization-type"

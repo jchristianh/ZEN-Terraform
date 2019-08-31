@@ -1,7 +1,6 @@
-# display quick summary of ip and connnection information
-output "Connection Information" {
+# Display summary of Connnection Information
+output "Connection_Information" {
   value = <<EOF
-
 
 ----------------------------------------------------------------------------------------------
 Connection Details for ${module.tzg_www.www_name}:
@@ -28,3 +27,4 @@ Ansible    : ansible-playbook -i '${module.tzg_db.pub_ip},' --private-key=${modu
 
 EOF
 }
+

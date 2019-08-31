@@ -7,8 +7,8 @@
 
 
 [webservers:vars]
-systype=ws
+srvtype=ws
 
 
 [dbservers:vars]
-systype=db
+srvtype=db

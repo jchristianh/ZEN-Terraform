@@ -3,7 +3,8 @@ resource "aws_security_group" "tzg_web_acl" {
   description = "TZG Web Network ACL"
   vpc_id      = "${var.vpc_id}"
 
-  # allow SSH/HTTP/HTTPS inbound (from internet)
+  # Allow SSH/HTTP/HTTPS inbound (from internet):
+  ###############################################
   ingress {
     from_port   = "22"
     to_port     = "22"
@@ -32,7 +33,8 @@ resource "aws_security_group" "tzg_web_acl" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # allow any outbound
+  # Allow any outbound:
+  #####################
   egress {
     from_port   = 0
     to_port     = 0
@@ -47,7 +49,8 @@ resource "aws_security_group" "tzg_db_acl" {
   description = "TZG DB Network ACL"
   vpc_id      = "${var.vpc_id}"
 
-  # allow SSH inbound (from internet)
+  # Allow SSH inbound (from internet):
+  ####################################
   ingress {
     from_port   = "22"
     to_port     = "22"
@@ -55,7 +58,8 @@ resource "aws_security_group" "tzg_db_acl" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # allow MySQL access from VPC
+  # Allow MySQL access from VPC only:
+  ###################################
   ingress {
     from_port   = "3306"
     to_port     = "3306"
@@ -63,7 +67,8 @@ resource "aws_security_group" "tzg_db_acl" {
     cidr_blocks = ["10.2.2.0/24"]
   }
 
-  # allow any outbound
+  # Allow any outbound:
+  #####################
   egress {
     from_port   = 0
     to_port     = 0
